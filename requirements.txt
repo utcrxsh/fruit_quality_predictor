@@ -1,0 +1,7 @@
+streamlit>=1.20
+onnxruntime>=1.11
+onnx>=1.12
+torch>=1.12
+torchvision>=0.13
+numpy>=1.22
+Pillow>=9.0 
