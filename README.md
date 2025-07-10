@@ -1,25 +1,37 @@
 # Apple Fruit Quality Classification
 
-This project is an end-to-end deep learning system to classify fruit quality into 5 categories (Rotten to Fresh), achieving 93.6% accuracy on real-world datasets with significant class imbalance.
+This project is an end-to-end deep learning system to classify apple fruit quality into 5 categories (Rotten to Fresh), achieving **93.6% accuracy** on real-world datasets with significant class imbalance.
 
-Fine-tuned MobileNet V2 with aggressive augmentation techniques like MixUp, color jitter, and CLAHE to improve generalization across diverse field conditions.
-Optimized the model for real-time edge inference using ONNX conversion and batch-free evaluation.
+We fine-tuned **MobileNet V2** with advanced augmentation techniques such as **MixUp**, **color jitter**, and **CLAHE**, enabling better generalization in diverse real-world field conditions.
 
-## Project Structure
+The model was also optimized for **real-time edge inference** via ONNX conversion and batch-free evaluation.
+
+---
+
+## 📊 Training & Validation Performance
+
+Below is the training and validation loss and accuracy across 40 epochs, showing stable convergence and strong generalization:
+
+![Training and Validation Metrics](/data.png)
+
+- **Left Plot:** Loss curves with moving averages showing stable and decreasing loss for both training and validation.
+- **Right Plot:** Accuracy curves stabilizing near 98% training and 96–98% validation accuracy.
+- Minimal overfitting was observed, and training was consistent due to effective data augmentation and regularization.
+
+---
+
+## 🔧 Project Structure
+
 - `app/` - Application code for inference
 - `models/` - Trained ONNX model(s)
 - `training/` - Jupyter notebooks and scripts for model training
 - `requirements.txt` - Python dependencies
 
-## Setup
-1. Clone the repository
-2. Install dependencies:
+---
+
+## 🚀 Setup
+
+1. Clone the repository:
    ```bash
-   pip install -r requirements.txt
-   ```
-3. Run the app or training scripts as needed
-
-## Usage
-- To train a model: See scripts in `training/`
-- To run the app: See `app/app.py`
-
+   git clone https://github.com/yourusername/apple-fruit-quality.git
+   cd apple-fruit-quality
