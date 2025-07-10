@@ -1,14 +1,14 @@
 # Apple Fruit Quality Classification
 
-This project is an end-to-end deep learning system to classify apple fruit quality into 5 categories (Rotten to Fresh), achieving **93.6% accuracy** on real-world datasets with significant class imbalance.
+This project is an end-to-end deep learning system to classify apple fruit quality into 5 categories (Rotten to Fresh), achieving **96.2% accuracy** on real-world datasets with significant class imbalance.
 
-We fine-tuned **MobileNet V2** with advanced augmentation techniques such as **MixUp**, **color jitter**, and **CLAHE**, enabling better generalization in diverse real-world field conditions.
+Fine-tuned **MobileNet V2** with advanced augmentation techniques such as **MixUp**, **color jitter**, and **CLAHE**, enabling better generalization in diverse real-world field conditions.
 
 The model was also optimized for **real-time edge inference** via ONNX conversion and batch-free evaluation.
 
 ---
 
-## 📊 Training & Validation Performance
+##  Training & Validation Performance
 
 Below is the training and validation loss and accuracy across 40 epochs, showing stable convergence and strong generalization:
 
@@ -20,7 +20,7 @@ Below is the training and validation loss and accuracy across 40 epochs, showing
 
 ---
 
-## 🔧 Project Structure
+##  Project Structure
 
 - `app/` - Application code for inference
 - `models/` - Trained ONNX model(s)
@@ -29,7 +29,7 @@ Below is the training and validation loss and accuracy across 40 epochs, showing
 
 ---
 
-## 🚀 Setup
+##  Setup
 
 1. Clone the repository:
    ```bash
