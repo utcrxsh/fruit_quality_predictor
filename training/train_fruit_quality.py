@@ -161,15 +161,17 @@ class FruitQualityDataset(Dataset):
         return weights
 
 # --- Model ---
-class FruitQualityResNet(nn.Module):
+class FruitQualityMobileNet(nn.Module):
     def __init__(self, num_classes=5, pretrained=True, dropout_rate=0.3):
-        super(FruitQualityResNet, self).__init__()
-        self.backbone = models.resnet18(pretrained=pretrained)
-        num_features = self.backbone.fc.in_features
-        self.backbone.fc = nn.Sequential(
+        super(FruitQualityMobileNet, self).__init__()
+        self.backbone = models.mobilenet_v2(pretrained=pretrained)
+        in_features = self.backbone.classifier[1].in_features
+
+        self.backbone.classifier = nn.Sequential(
             nn.Dropout(dropout_rate),
-            nn.Linear(num_features, num_classes)
+            nn.Linear(in_features, num_classes)
         )
+
     def forward(self, x):
         return self.backbone(x)
 
@@ -251,7 +253,7 @@ def train_fruit_quality_model(train_dir, test_dir, num_epochs=50, batch_size=32,
     sampler = WeightedRandomSampler(sample_weights, len(sample_weights))
     train_loader = DataLoader(train_dataset, batch_size=batch_size, sampler=sampler)
     val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False)
-    model = FruitQualityResNet(num_classes=len(train_dataset.classes), dropout_rate=0.3)
+    model = FruitQualityMobileNet(num_classes=len(train_dataset.classes), dropout_rate=0.3)
     model = model.to(device)
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.Adam(model.parameters(), lr=learning_rate, weight_decay=1e-5)
@@ -363,7 +365,7 @@ def main():
     train_dir, test_dir, imbalance_ratio = prepare_dataset_split(
         ORIGINAL_DATASET_DIR, BASE_DIR, test_size=0.2
     )
-    print("\n🚀 Step 2: Training ResNet-18 with advanced techniques...")
+    print("\n🚀 Step 2: Training MobileNet with advanced techniques...")
     model, class_names = train_fruit_quality_model(
         train_dir, test_dir, num_epochs=30, batch_size=32, learning_rate=0.001
     )
