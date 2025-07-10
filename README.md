@@ -2,7 +2,7 @@
 
 This project is an end-to-end deep learning system to classify fruit quality into 5 categories (Rotten to Fresh), achieving 93.6% accuracy on real-world datasets with significant class imbalance.
 
-Fine-tuned ResNet-18 with aggressive augmentation techniques like MixUp, color jitter, and CLAHE to improve generalization across diverse field conditions.
+Fine-tuned MobileNet V2 with aggressive augmentation techniques like MixUp, color jitter, and CLAHE to improve generalization across diverse field conditions.
 Optimized the model for real-time edge inference using ONNX conversion and batch-free evaluation.
 
 ## Project Structure
